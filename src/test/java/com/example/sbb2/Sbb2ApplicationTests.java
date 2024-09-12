@@ -4,6 +4,8 @@ import com.example.sbb2.answer.Answer;
 import com.example.sbb2.answer.AnswerRepository;
 import com.example.sbb2.question.Question;
 import com.example.sbb2.question.QuestionRepository;
+import com.example.sbb2.question.QuestionService;
+import com.example.sbb2.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -100,6 +102,26 @@ class SbbApplicationTests {
 
 		assertEquals(1, answerList.size());
 		assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+	}
+
+	@Autowired
+	private QuestionService questionService;
+
+	@Test
+	void testJpa() { // 3-02 페이지 추가를 위한 300회 질문등록 테스트
+		for (int i = 1; i <= 300; i++) {
+			String subject = String.format("테스트 데이터입니다:[%03d]", i);
+			String content = "내용무";
+			this.questionService.create(subject, content);
+		}
+	}
+
+	@Autowired
+	UserService userService;
+
+	@Test
+	void testJpa2(){ //임의로 유저 정보 기입
+		userService.create("test", "test@test.com", "1234");
 	}
 
 }
