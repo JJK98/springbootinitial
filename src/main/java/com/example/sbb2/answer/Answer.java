@@ -26,4 +26,6 @@ public class Answer {
 
     @ManyToOne //n:1관계
     private Question question;
+
+    private LocalDateTime modifyDate;
 }
