@@ -1,7 +1,6 @@
 package com.example.sbb2.user;
 
 
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,4 +34,6 @@ public class UserSecurityService implements UserDetailsService {
         }
         return new User(siteUser.getUsername(), siteUser.getPassword(), authorities);
     }
+
+
 }

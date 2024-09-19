@@ -2,6 +2,7 @@ package com.example.sbb2.question;
 
 
 import com.example.sbb2.answer.Answer;
+import com.example.sbb2.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,9 @@ public class Question {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    @ManyToOne
+    SiteUser author;
 
     private LocalDateTime createDate;
 
